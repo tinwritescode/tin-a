@@ -40,6 +40,13 @@ export function Header() {
             >
               Blog
             </Link>
+            <Link
+              href="/nft-gift"
+              className={cn(
+                isActive("/nft-gift"),
+                "font-medium transition-colors duration-200",
+              )}
+            >NFT Gift</Link>
           </nav>
 
           {/* Right side - Auth button */}
