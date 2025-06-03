@@ -4,6 +4,9 @@ import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import { Header } from "~/components/Header";
+import { Footer } from "~/components/Footer";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -21,8 +24,14 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geist.variable}`}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+      <body className="flex min-h-screen flex-col">
+        <TRPCReactProvider>
+          <SessionProvider>
+            <Header />
+            <main className="flex-1 pt-16">{children}</main>
+            <Footer />
+          </SessionProvider>
+        </TRPCReactProvider>
       </body>
     </html>
   );
