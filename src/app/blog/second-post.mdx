@@ -1,0 +1,68 @@
+---
+title: Getting Started with Tailwind CSS in Next.js
+description: A quick guide to setting up and using Tailwind CSS in your Next.js projects.
+date: 2023-10-27
+---
+
+## Introduction
+
+Tailwind CSS is a utility-first CSS framework that allows you to build custom designs quickly by providing a wide range of utility classes directly in your HTML. When combined with Next.js, it creates a powerful development environment.
+
+## Installation
+
+First, you need to install Tailwind CSS and its peer dependencies via npm or yarn:
+```
+bash
+npm install -D tailwindcss postcss autoprefixer
+```
+or
+```
+bash
+yarn add -D tailwindcss postcss autoprefixer
+```
+## Configuration
+
+Next, generate your `tailwind.config.js` and `postcss.config.js` files:
+```
+bash
+npx tailwindcss init -p
+```
+This will create minimal `tailwind.config.js` and `postcss.config.js` files at the root of your project.
+
+## Configure your template paths
+
+Add the paths to all of your template files in your `tailwind.config.js` file.
+```
+javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+## Include Tailwind directives in your CSS
+
+Add the `@tailwind` directives for each of Tailwind’s layers to your main CSS file.
+```
+css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+## Start using Tailwind
+
+Now you can start using Tailwind's utility classes in your components and pages!
+```
+jsx
+<h1 className="text-3xl font-bold underline">
+  Hello, Tailwind!
+</h1>
+```
+## Conclusion
+
+Setting up Tailwind CSS with Next.js is straightforward and provides a flexible way to style your applications. Enjoy the power of utility-first CSS!

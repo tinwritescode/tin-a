@@ -23,16 +23,19 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable}`}>
-      <body className="flex min-h-screen flex-col">
-        <TRPCReactProvider>
-          <SessionProvider>
+    <TRPCReactProvider>
+      <SessionProvider>
+        <html lang="en" className={`${geist.variable}`}>
+          <body className="flex min-h-screen flex-col">
+
             <Header />
             <main className="flex-1 pt-16">{children}</main>
             <Footer />
-          </SessionProvider>
-        </TRPCReactProvider>
-      </body>
-    </html>
+
+          </body>
+
+        </html>
+      </SessionProvider>
+    </TRPCReactProvider>
   );
 }

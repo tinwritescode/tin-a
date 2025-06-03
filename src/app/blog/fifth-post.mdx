@@ -1,0 +1,63 @@
+---
+title: Integrating MDX in Next.js
+description: A guide on how to integrate MDX into your Next.js project for writing blog posts and content.
+date: 2023-11-01
+---
+
+# Integrating MDX in Next.js
+
+MDX allows you to write JSX in your Markdown documents. This is incredibly powerful for creating interactive content and dynamic blog posts.
+
+## Installation
+
+First, you need to install the necessary packages:
+```
+bash
+pnpm install @next/mdx @mdx-js/loader remark-gfm
+```
+We encountered an issue with `@next/remark-plugin-mdx` earlier, but the above packages are essential.
+
+## Configuration
+
+You'll need to configure your `next.config.js` to handle `.mdx` files.
+```
+javascript
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [require('remark-gfm')],
+    rehypePlugins: [],
+  },
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+};
+
+module.exports = withMDX(nextConfig);
+```
+This configuration tells Next.js to process files with `.mdx` or `.md` extensions using the MDX loader and applies the `remark-gfm` plugin for GitHub Flavored Markdown.
+
+## Creating MDX Pages
+
+You can now create `.mdx` files directly in your `src/app` directory (or `pages` if you are using the Pages Router). For example, `src/app/blog/my-first-post.mdx`.
+
+These files will automatically be treated as pages by Next.js. You can include Markdown, HTML, and React components within your MDX files.
+
+## Using Components
+
+One of the biggest advantages of MDX is the ability to use React components within your Markdown.
+```
+mdx
+This is a regular paragraph.
+
+<button onClick={() => alert('Hello from a component!')}>
+  Click Me
+</button>
+
+This is another paragraph after the component.
+```
+This allows you to create rich, interactive content without leaving your Markdown file.
+
+Integrating MDX in Next.js is a straightforward process that unlocks the power of combining Markdown with the interactivity of React components, making it ideal for blogs, documentation, and content-heavy sites.

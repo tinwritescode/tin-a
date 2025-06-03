@@ -1,0 +1,57 @@
+---
+title: Getting Started with MDX
+description: A quick guide to writing your first blog post with MDX.
+date: 2023-10-27
+---
+
+## What is MDX?
+
+MDX is an authorable format that lets you seamlessly write JSX in your Markdown documents. You can use your favorite components, like charts, alerts, or blog post lists, and embed them directly in your content.
+
+This means you can combine the ease of writing Markdown with the power of React (or other JSX frameworks).
+
+## Why Use MDX?
+
+- **Interactive Components:** Easily embed interactive elements like charts or quizzes directly into your content.
+- **Reusability:** Create reusable components and use them across multiple blog posts.
+- **Familiar Syntax:** If you know Markdown and JSX, you already know MDX.
+
+## How to Get Started
+
+First, you'll need to set up MDX in your project. The exact steps depend on your framework (like Next.js, Gatsby, etc.). Generally, it involves installing the necessary packages and configuring your build process.
+
+For example, in a Next.js project, you might configure your `next.config.js` like this:
+```
+javascript
+const withMDX = require('@next/mdx')();
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Add pageExtensions to the config
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+};
+
+module.exports = withMDX(nextConfig);
+```
+Once configured, you can create `.mdx` files in your `pages` or `app` directory (depending on your Next.js version) and start writing!
+
+## Example MDX
+
+Here's a simple example demonstrating how to use a React component within your MDX:
+```
+mdx
+import { Button } from './Button'; // Assuming you have a Button component
+
+# My First MDX Page
+
+This is some standard Markdown content.
+
+<Button onClick={() => alert('Clicked!')}>Click Me</Button>
+
+This is more Markdown.
+```
+In this example, `<Button>` is a regular React component that's being used directly within the Markdown.
+
+## Conclusion
+
+MDX provides a powerful way to create richer, more interactive content for your blog or website. By combining the simplicity of Markdown with the flexibility of JSX, you can build compelling experiences for your readers. Give it a try!
