@@ -21,6 +21,7 @@ This means you can combine the ease of writing Markdown with the power of React 
 First, you'll need to set up MDX in your project. The exact steps depend on your framework (like Next.js, Gatsby, etc.). Generally, it involves installing the necessary packages and configuring your build process.
 
 For example, in a Next.js project, you might configure your `next.config.js` like this:
+
 ```
 javascript
 const withMDX = require('@next/mdx')();
@@ -33,11 +34,13 @@ const nextConfig = {
 
 module.exports = withMDX(nextConfig);
 ```
+
 Once configured, you can create `.mdx` files in your `pages` or `app` directory (depending on your Next.js version) and start writing!
 
 ## Example MDX
 
 Here's a simple example demonstrating how to use a React component within your MDX:
+
 ```
 mdx
 import { Button } from './Button'; // Assuming you have a Button component
@@ -50,6 +53,7 @@ This is some standard Markdown content.
 
 This is more Markdown.
 ```
+
 In this example, `<Button>` is a regular React component that's being used directly within the Markdown.
 
 ## Conclusion

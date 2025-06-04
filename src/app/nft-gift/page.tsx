@@ -7,8 +7,8 @@ import { useState } from "react";
 // Simple mock component for an NFT card
 const NFTCard = ({ id }: { id: number }) => {
   return (
-    <div className="border p-2 rounded-md text-center text-sm">
-      <div className="w-full h-16 bg-gray-200 mb-2 flex items-center justify-center">
+    <div className="rounded-md border p-2 text-center text-sm">
+      <div className="mb-2 flex h-16 w-full items-center justify-center bg-gray-200">
         NFT {id}
       </div>
       NFT ID: {id}
@@ -29,7 +29,11 @@ const NftGiftPage = () => {
   const nftsPerPage = 10;
 
   // Generate mock NFTs
-  const { data: mockNFTs, isLoading, isError } = useQuery({
+  const {
+    data: mockNFTs,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["mockNFTs"],
     queryFn: fetchMockNFTs,
   });
@@ -48,16 +52,16 @@ const NftGiftPage = () => {
   };
 
   return (
-    <div className="container mx-auto py-8 mt-16">
-      <h1 className="text-3xl font-bold mb-6">NFT Gift</h1>
+    <div className="container mx-auto mt-16 py-8">
+      <h1 className="mb-6 text-3xl font-bold">NFT Gift</h1>
 
       {/* Minting Section */}
       <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Minting</h2>
+        <h2 className="mb-4 text-2xl font-semibold">Minting</h2>
         <p className="mb-4">NFTs left for today: {nftsLeft}</p>
         <button
           onClick={handleJoinQueue}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+          className="rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700"
         >
           Join the queue
         </button>
@@ -65,17 +69,17 @@ const NftGiftPage = () => {
 
       {/* NFT List Section */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">NFT List</h2>
+        <h2 className="mb-4 text-2xl font-semibold">NFT List</h2>
 
         {isLoading && <p>Loading NFTs...</p>}
         {isError && <p>Error loading NFTs.</p>}
 
         {!isLoading && !isError && (
           <>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-6">
-          {currentNFTs.map((nft) => (
-            <NFTCard key={nft.id} id={nft.id} />
-          ))}
+            <div className="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {currentNFTs.map((nft) => (
+                <NFTCard key={nft.id} id={nft.id} />
+              ))}
             </div>
 
             {/* Pagination */}
@@ -85,7 +89,7 @@ const NftGiftPage = () => {
                   <button
                     key={i + 1}
                     onClick={() => paginate(i + 1)}
-                    className={`px-3 py-1 border rounded-md ${
+                    className={`rounded-md border px-3 py-1 ${
                       currentPage === i + 1
                         ? "bg-blue-600 text-white"
                         : "bg-white text-gray-700 hover:bg-gray-200"
@@ -94,8 +98,10 @@ const NftGiftPage = () => {
                     {i + 1}
                   </button>
                 ))}
-              </div>)}
-            </>)}
+              </div>
+            )}
+          </>
+        )}
         <Toaster />
       </section>
     </div>

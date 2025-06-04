@@ -9,17 +9,19 @@ Adding pagination to your blog list is essential for managing a growing number o
 There are several ways to implement pagination, depending on your setup. If you are fetching data from an API, you can use query parameters like `page` and `limit` to control which posts are returned.
 
 For example, a request might look like this:
+
 ```
 GET /api/posts?page=2&limit=10
 ```
+
 On the frontend, you'll need to display navigation controls that allow users to move between pages. This typically involves "Previous" and "Next" buttons, and sometimes a list of page numbers.
 
 When a user clicks a pagination control, you update the current page state and fetch the new set of posts for that page.
 
 Consider the user experience:
 
-*   Clearly indicate the current page.
-*   Disable "Previous" on the first page and "Next" on the last page.
-*   Provide feedback (e.g., a loading spinner) while fetching new data.
+- Clearly indicate the current page.
+- Disable "Previous" on the first page and "Next" on the last page.
+- Provide feedback (e.g., a loading spinner) while fetching new data.
 
 Implementing pagination requires careful handling of state and data fetching, but it's a crucial feature for a scalable blog.
