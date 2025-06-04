@@ -49,6 +49,15 @@ export function Header() {
             >
               NFT Gift
             </Link>
+            <Link
+              href="/chat"
+              className={cn(
+                isActive("/chat"),
+                "font-medium transition-colors duration-200",
+              )}
+            >
+              Chat
+            </Link>
           </nav>
 
           {/* Right side - Auth button */}
