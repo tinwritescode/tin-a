@@ -65,11 +65,9 @@ export function Chat() {
     sendMessage({ message: newMessage.trim() });
   };
 
-  const messages =
-    chatData?.pages
-      .slice()
-      .reverse()
-      .flatMap((page) => page.messages) ?? [];
+  const messages = (chatData?.pages ?? [])
+    .flatMap((page) => page.messages)
+    .reverse();
 
   return (
     <div className="flex h-[500px] flex-col">

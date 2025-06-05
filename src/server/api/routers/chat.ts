@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 export const chatRouter = createTRPCRouter({
-  getMessages: protectedProcedure
+  getMessages: publicProcedure
     .input(
       z.object({
         cursor: z.string().nullish(),
@@ -15,7 +15,7 @@ export const chatRouter = createTRPCRouter({
         skip: input.cursor ? 1 : 0,
         cursor: input.cursor ? { id: input.cursor } : undefined,
         orderBy: {
-          createdAt: "asc",
+          createdAt: "desc",
         },
         include: {
           sender: {
